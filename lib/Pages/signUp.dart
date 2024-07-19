@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:pedagogicalinnovation/Pages/login.dart';
-
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({
@@ -172,29 +170,13 @@ class _RegisterPageState extends State<RegisterPage> {
                               height: 20,
                             ),
                             TextFormField(
-                              onChanged: (value) {
-                                setState(() {
-                                  // Update state variables for checkboxes
-                                  hasSpecialCharacter = value.contains(
-                                      RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
-                                  hasUppercaseLetter =
-                                      value.contains(RegExp(r'[A-Z]'));
-                                  hasLowercaseLetter =
-                                      value.contains(RegExp(r'[a-z]'));
-                                });
-                              },
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Veuillez saisir un mot de passe';
-                                }
-
-                                return null; // Return null if all conditions are satisfied
-                              },
+                              validator: (value) => value!.isNotEmpty
+                                  ? null
+                                  : "Veuillez saisir votre Email",
                               maxLines: 1,
-                              obscureText: true,
                               decoration: InputDecoration(
-                                prefixIcon: const Icon(Icons.mail),
                                 hintText: 'Email',
+                                prefixIcon: const Icon(Icons.email),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
